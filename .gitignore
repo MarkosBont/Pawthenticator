@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+*.egg
+*.pyo
+*.pyd
+*.pdb
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Virtual environment
+.venv/
+env/
+venv/
+
+# OS/macOS
+.DS_Store
+
+# PyCharm
+.idea/
+
+# Streamlit
+.streamlit/config.toml
+
+# Model files / data (optional)
+*.pth
+*.pt
