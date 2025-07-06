@@ -1,4 +1,5 @@
 import wikipedia
+import json
 
 def get_wikipedia(breed):
     try:
@@ -23,3 +24,11 @@ def get_wikipedia(breed):
         return None
     except Exception as e:
         return None
+
+def get_local_wikipedia(breed):
+    with open('wikipedia_pages.json', 'r') as f:
+        dictionary = json.load(f)
+
+    return dictionary[breed]
+
+

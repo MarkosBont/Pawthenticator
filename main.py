@@ -3,7 +3,7 @@ import time
 import streamlit as st
 from PIL import Image
 from model.model import determine_breed
-from utils import get_wikipedia
+from utils import get_local_wikipedia
 
 # Injecting Playfair Display font via Google Fonts
 st.markdown("""
@@ -79,9 +79,18 @@ if file:
             for (breed, confidence) in results:
                 with st.expander(f"{breed} - {confidence * 100:.2f}% Confidence"):
                     if confidence > 0.9:
-                        st.success(f"✅ Your Dog is likely a {breed}! ")
+                        st.markdown(f"""
+                            <h3 style='
+                                text-align: center;
+                                font-family: "Playfair Display", serif;
+                                color: #B55C2B;
+                                font-size: 1.8em;
+                            '>
+                                {breed} — {confidence * 100:.2f}% Confidence
+                            </h3>
+                        """, unsafe_allow_html=True)
                         st.write(f"Here's some information about the {breed}:")
-                        st.write(f"{get_wikipedia(breed)}")
+                        st.write(f"{get_local_wikipedia(breed)}")
                         break
                     st.markdown(f"""
                         <h3 style='
@@ -93,5 +102,5 @@ if file:
                             {breed} — {confidence * 100:.2f}% Confidence
                         </h3>
                     """, unsafe_allow_html=True)
-                    st.write(f"Here's some information about the {breed}: \n {get_wikipedia(breed)}")
+                    st.write(f"Here's some information about the {breed}: \n {get_local_wikipedia(breed)}")
 
